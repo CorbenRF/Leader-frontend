@@ -1,0 +1,32 @@
+@media (min-width: 1200px) {
+    .content {
+        max-width: 1170px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .content {
+        max-width: 930px;
+    }
+}
+
+@media (max-width: 750px) {
+    .content {
+        max-width: 690px;
+    }
+}
+
+@media (max-width: 510px) {
+    .nav {
+        margin-top: 28.6px;
+    }
+}
+
+@media (max-width: 580px) {
+    .content {
+        max-width: 320px;
+    }
+    .nav {
+        margin-top: 27px;
+    }
+}
