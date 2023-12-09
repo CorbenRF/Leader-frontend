@@ -2,6 +2,7 @@
     --color-primary-blue: #296DC1;
     --color-secondary-greenish: #00A82D;
     --color-black: #000;
+    --basket-fill: #35383A;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
 }
 
 .h1 {
+    margin-bottom: 40px;
     color: #000;
 text-align: center;
 font-family: Montserrat;
@@ -40,6 +42,15 @@ line-height: 130%; /* 20.8px */
     padding: 13px;
     background-color: var(--color-primary-blue);
     text-align: center;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 15.6px */
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 .btn-big {
@@ -48,10 +59,29 @@ line-height: 130%; /* 20.8px */
     text-align: center;
 }
 
+.btn-success {
+    background-color: var(--color-secondary-greenish);
+}
+
 .content {
     margin: 0 auto;
+    padding: 0 30px;
 }
 
 .nav {
     margin-top: 37px;
+}
+
+.catalogue {
+    margin-top: 60px;
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 30px;
+      place-content: center;
+    }
+  }
+
+.item {
+    min-height: 380px;
 }

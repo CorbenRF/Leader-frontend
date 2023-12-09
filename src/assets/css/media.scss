@@ -1,6 +1,9 @@
-@media (min-width: 1200px) {
+@media (max-width: 2160px) {
     .content {
         max-width: 1170px;
+    }
+    .catalogue__content {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -8,11 +11,17 @@
     .content {
         max-width: 930px;
     }
+    .catalogue__content {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 750px) {
     .content {
         max-width: 690px;
+    }
+    .catalogue__content {
+        grid-template-columns: 450px;
     }
 }
 
@@ -20,13 +29,23 @@
     .nav {
         margin-top: 28.6px;
     }
+    .logo img {
+        width: 180px;
+        height: 30px;
+    }
+    .basket__text {
+        display: none;
+    }
 }
 
 @media (max-width: 580px) {
     .content {
-        max-width: 320px;
+        min-width: 320px;
     }
     .nav {
         margin-top: 27px;
+    }
+    .catalogue__content {
+        grid-template-columns: 270px;
     }
 }

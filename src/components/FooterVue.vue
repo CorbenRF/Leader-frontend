@@ -8,8 +8,9 @@
 
 <style lang="scss" scoped>
   .footer {
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
+    margin-top: 70px;
     padding: 20px 0;
     &__text {
       color: #7C828B;
