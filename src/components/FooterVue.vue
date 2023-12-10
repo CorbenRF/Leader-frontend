@@ -10,9 +10,12 @@
   .footer {
     // position: absolute;
     // bottom: 0;
-    margin-top: 70px;
-    padding: 20px 0;
+    margin-top: auto;
+
     &__text {
+      margin-top: 70px;
+      padding: 20px 0;
+      border-top: 1px solid #A8AFBB;
       color: #7C828B;
     font-size: 12px;
     }

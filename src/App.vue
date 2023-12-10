@@ -13,6 +13,20 @@ import FooterVue from './components/FooterVue.vue';
 
 export default {
   components: { NavbarVue, FooterVue },
+  mounted() {
+    this.$store.dispatch('loadProductsCatalogue');
+    this.$store.dispatch('changeWindowWidth', window.innerWidth);
+    window.addEventListener('resize', this.myEventHandler);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.myEventHandler);
+  },
+  methods: {
+    myEventHandler() {
+      // your code for handling resize...
+      this.$store.dispatch('changeWindowWidth', window.innerWidth);
+    },
+  },
 };
 </script>
 

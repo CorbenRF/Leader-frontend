@@ -9,28 +9,41 @@
     <p class="item__name text">{{ product.name }}</p>
     <p class="item__price">{{ this.formatPriceRu(product.price) }}</p>
     <button type="button" class="btn" :class="{ 'btn-success': this.isInCart }"
-    v-if="this.isHovering">
+    v-if="this.isHovering || windowWidth < 751" @click="addToCart" :disabled="this.isInCart">
       {{ this.isInCart ? 'В КОРЗИНЕ' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </button>
   </div>
 </template>
 
 <script>
-import { API_BASE_URL } from '@/config';
+import ImagePath from '@/mixins/ImagePath.vue';
 import formatMixin from '@/mixins/formatMixin.vue';
 
 export default {
   data() {
     return {
-      isInCart: false,
+      // isInCart: false,
       isHovering: false,
     };
   },
-  props: ['product'],
-  mixins: [formatMixin],
+  props: ['product', 'windowWidth'],
+  mixins: [formatMixin, ImagePath],
   computed: {
-    picUrl() {
-      return API_BASE_URL + this.product.url;
+    isInCart() {
+      let flag = false;
+      this.$store.getters.getCartData.forEach((a) => {
+        if (a.id === this.product.id) {
+          flag = true;
+          return flag;
+        }
+        return false;
+      });
+      return flag;
+    },
+  },
+  methods: {
+    addToCart() {
+      this.$store.dispatch('addToCart', this.product);
     },
   },
 };

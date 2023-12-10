@@ -3,7 +3,8 @@
     <h1 class="h1">Каталог товаров</h1>
     <div class="catalogue__content">
 
-    <CatalogueItem v-for="(item, index) of productsData" :key="index" :product="item"/>
+    <CatalogueItem v-for="(item, index) of productsData" :key="index" :product="item"
+    :windowWidth="this.windowWidth" />
     </div>
 
   </div>
@@ -24,13 +25,14 @@ export default {
     productsData() {
       return this.$store.getters.getProducts;
     },
+    windowWidth() {
+      return this.$store.getters.getWindowWidth;
+    },
   },
   methods: {
 
   },
-  mounted() {
-    this.$store.dispatch('loadProductsCatalogue');
-  },
+
 };
 </script>
 

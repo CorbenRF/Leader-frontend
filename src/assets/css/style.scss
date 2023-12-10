@@ -38,6 +38,12 @@ font-weight: 500;
 line-height: 130%; /* 20.8px */
 }
 
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
 .btn {
     padding: 13px;
     background-color: var(--color-primary-blue);
@@ -64,8 +70,11 @@ line-height: 130%; /* 20.8px */
 }
 
 .content {
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav {

@@ -22,12 +22,19 @@
 export default {
   data() {
     return {
-      count: 0,
+      // count: 0,
     };
+  },
+  computed: {
+    count() {
+      return this.$store.getters.getCartData.length;
+    },
   },
   methods: {
     goToBasket() {
-      this.$router.push('/cart');
+      if (this.count > 0) {
+        this.$router.push('/cart');
+      }
     },
   },
 };
