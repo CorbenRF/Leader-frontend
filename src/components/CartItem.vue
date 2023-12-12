@@ -27,6 +27,7 @@
     </div>
     <p class="cart__price">{{ subtotalPrice }}</p>
     <div class="cart__close" tabindex="0" @click="deleteItem" @keydown.enter="deleteItem">
+    <button type="button" class="btn cart__close-btn">Удалить</button>
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
         <line y1="-0.5" x2="17.5227" y2="-0.5"
         transform="matrix(0.727587 0.686015 -0.727587 0.686015 0.250488 0.843262)" stroke="black"/>
@@ -64,7 +65,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cart {
   &__item {
     display: flex;
@@ -102,6 +103,9 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    &-btn {
+      display: none;
+    }
   }
   &__price {
     color: #000;

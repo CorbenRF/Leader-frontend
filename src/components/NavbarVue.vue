@@ -1,4 +1,5 @@
 <template>
+  <div class="content">
   <nav class="nav">
     <div class="logo">
     <RouterLink to="/">
@@ -15,6 +16,7 @@
       <span class="basket__text">Корзина</span><div class="basket__count">{{ count }}</div>
     </div>
   </nav>
+</div>
 </template>
 
 <script>

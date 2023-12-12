@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer content">
     <p class="footer__text text">
       Тестовое задание на должность младшего программиста «Лидера поиска», ver. 3.0
     </p>
@@ -8,8 +8,7 @@
 
 <style lang="scss" scoped>
   .footer {
-    // position: absolute;
-    // bottom: 0;
+    width: 100%;
     margin-top: auto;
 
     &__text {

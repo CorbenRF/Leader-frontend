@@ -1,4 +1,5 @@
 <template>
+  <div class="content">
   <div class="catalogue" v-if="!this.$store.getProductsLoading">
     <h1 class="h1">Каталог товаров</h1>
     <div class="catalogue__content">
@@ -9,6 +10,7 @@
 
   </div>
   <h2 class="h2" v-else>Загрузка</h2>
+</div>
 </template>
 
 <script>

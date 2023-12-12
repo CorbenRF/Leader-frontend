@@ -58,6 +58,9 @@ export default createStore({
     DeleteCartItem(state, id) {
       state.cartData = state.cartData.filter((e) => e.id !== id);
     },
+    CleanCartData(state) {
+      state.cartData = [];
+    },
     setProductsData(state, productsData) {
       state.productsData = productsData;
     },
@@ -82,6 +85,10 @@ export default createStore({
     },
     deleteCartItem(context, id) {
       context.commit('DeleteCartItem', id);
+      context.commit('updateCartDataStorage');
+    },
+    cleanCart(context) {
+      context.commit('CleanCartData');
       context.commit('updateCartDataStorage');
     },
     loadProductsCatalogue(context) {

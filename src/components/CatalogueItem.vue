@@ -9,7 +9,7 @@
     <p class="item__name text">{{ product.name }}</p>
     <p class="item__price">{{ this.formatPriceRu(product.price) }}</p>
     <button type="button" class="btn" :class="{ 'btn-success': this.isInCart }"
-    v-if="this.isHovering || windowWidth < 751" @click="addToCart" :disabled="this.isInCart">
+    v-if="this.isHovering || windowWidth < 751" @click="addToCart" >
       {{ this.isInCart ? 'В КОРЗИНЕ' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </button>
   </div>
@@ -43,7 +43,9 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$store.dispatch('addToCart', this.product);
+      if (!this.isInCart) {
+        this.$store.dispatch('addToCart', this.product);
+      }
     },
   },
 };

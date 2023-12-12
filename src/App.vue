@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="main">
     <navbar-vue />
   <router-view/>
   <footer-vue />

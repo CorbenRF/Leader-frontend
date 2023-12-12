@@ -44,6 +44,19 @@ line-height: 130%; /* 20.8px */
     left: 50%;
 }
 
+.hidden {
+    display: none;
+}
+
+.form__input {
+    box-sizing: border-box;
+    padding: 20px 26px;
+    &::placeholder {
+        // padding: 20px 26px;
+        color: #535860;
+    }
+}
+
 .btn {
     padding: 13px;
     background-color: var(--color-primary-blue);
@@ -57,6 +70,10 @@ line-height: 130%; /* 20.8px */
     letter-spacing: 0.6px;
     text-transform: uppercase;
     cursor: pointer;
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }
 
 .btn-big {
@@ -69,15 +86,21 @@ line-height: 130%; /* 20.8px */
     background-color: var(--color-secondary-greenish);
 }
 
-.content {
+.main {
     min-height: 100vh;
-    margin: 0 auto;
-    padding: 0 30px;
     display: flex;
     flex-direction: column;
 }
 
+.content {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
 .nav {
+    width: 100%;
     margin-top: 37px;
 }
 
@@ -93,4 +116,20 @@ line-height: 130%; /* 20.8px */
 
 .item {
     min-height: 380px;
+}
+
+.form {
+    &__wrapper {
+      & > .input__wrapper, button, h2 {
+        width: 430px;
+        height: 60px;
+        margin-bottom: 30px;
+      }
+    }
+    &__input {
+        width: 100%;
+        &:focus-visible {
+            border: 1px solid #4892EC;
+        }
+    }
 }

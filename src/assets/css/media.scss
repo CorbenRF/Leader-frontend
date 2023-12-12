@@ -23,6 +23,49 @@
     .catalogue__content {
         grid-template-columns: 450px;
     }
+    .cart {
+        &__name, &__counter, &__price, &__close {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        &__item {
+            box-sizing: border-box;
+            width: 100%;
+            flex-direction: column;
+        }
+        &__pic {
+            margin-bottom: 11px;
+            width: 335px;
+            height: 399px;
+        }
+        &__total {
+            box-sizing: border-box;
+            width: 100%;
+        }
+        &__close {
+            position: relative;
+            &-btn {
+                display: block;
+            }
+            & button {
+                padding: 10px 40px 9px 62px;
+                text-align: center;
+                font-family: Montserrat;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%;
+                text-transform: none;
+            }
+            & svg {
+                position: absolute;
+                left: 40px;
+                & line {
+                    stroke: #fff;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 510px) {
@@ -40,12 +83,43 @@
 
 @media (max-width: 580px) {
     .content {
-        min-width: 320px;
+        padding: 0 15px;
+        min-width: 290px;
     }
     .nav {
-        margin-top: 27px;
+        margin-bottom: 49px;
+        margin-top: 28.5px;
     }
     .catalogue__content {
         grid-template-columns: 270px;
+    }
+    .form__wrapper {
+        padding: 0 17px 0 16px;
+        & > * {
+            width: 100%!important;
+        }
+    }
+    .cart {
+        &__pic {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    .modal-custom-confirm {
+        box-sizing: border-box;
+        max-width: 278px;
+        padding: 32px 20px 30px 20px;
+    }
+    .dialogue__modal-msg {
+        font-size: 18px!important;
+        &:last-child {
+            font-size: 16px!important;
+        }
+    }
+    .dialogue__modal-bold {
+        font-size: 18px!important;
+        &:last-child {
+            font-size: 16px!important;
+        }
     }
 }
