@@ -99,6 +99,9 @@ export default {
     isValidForm() {
       return this.v$.$invalid;
     },
+    getMailServerResponse() {
+      return this.$store.getters.getmailServerResponse;
+    },
   },
   methods: {
     showModal() {
@@ -111,7 +114,6 @@ export default {
     },
     closeModal() {
       this.modalVisible = false;
-      this.$store.dispatch('cleanCart');
       this.$router.push('/');
     },
     onAccept(e) {
@@ -129,9 +131,30 @@ export default {
         this.$router.push('/');
       }
     },
-    submitForm() {
-      this.showModal();
+    async submitForm() {
+      this.$store.dispatch('sendMail', {
+        name: this.name,
+        tel: this.telMasked,
+        orderId: '1234567',
+        email: this.email,
+      })
+        .then((response) => {
+          console.log('mail server response is: ', response);
+          if (this.getMailServerResponse) {
+            if (this.getMailServerResponse.accepted.length > 0) {
+              this.showModal();
+              this.$store.dispatch('cleanCart');
+            } else {
+              alert(`${this.getMailServerResponse.rejected}`);
+            }
+          }
+        });
     },
+  },
+  mounted() {
+    if (this.isCartEmpty) {
+      this.$router.push('/');
+    }
   },
 };
 </script>

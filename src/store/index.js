@@ -10,10 +10,14 @@ export default createStore({
     productsLoading: false,
     productsLoadingFailed: false,
     windowWidth: null,
+    mailServerResponse: '',
   },
   getters: {
     getWindowWidth(state) {
       return state.windowWidth;
+    },
+    getmailServerResponse(state) {
+      return state.mailServerResponse;
     },
     getCartData(state) {
       return state.cartData;
@@ -36,6 +40,9 @@ export default createStore({
   mutations: {
     setWindowWidth(state, width) {
       state.windowWidth = width;
+    },
+    setMailServerResponse(state, response) {
+      state.mailServerResponse = response;
     },
     updateCartDataStorage(state) { // not sure if needed
       localStorage.setItem('cartData', JSON.stringify(state.cartData));
@@ -64,7 +71,7 @@ export default createStore({
     setProductsData(state, productsData) {
       state.productsData = productsData;
     },
-    setproductsLoadingFailed(state, arg) {
+    setProductsLoadingFailed(state, arg) {
       state.productsLoadingFailed = arg;
     },
     setProductsLoading(state, arg) {
@@ -92,13 +99,22 @@ export default createStore({
       context.commit('updateCartDataStorage');
     },
     loadProductsCatalogue(context) {
-      this.productsLoading = true;
+      context.commit('setProductsLoading', true);
       return axios.get(`${API_BASE_URL}/products`)
         .then((response) => {
           context.commit('setProductsData', response.data);
         })
         .catch(() => context.commit('setProductsLoadingFailed', true))
         .then(() => context.commit('setProductsLoading', false));
+    },
+    sendMail(context, payload) {
+      return axios.post(`${API_BASE_URL}/mail`, payload)
+        .then((response) => {
+          console.log('vuex response to mail send: ', response);
+          context.commit('setMailServerResponse', response.data.result);
+          return response.data.result;
+        })
+        .catch((e) => context.commit('setMailServerResponse', e.result));
     },
   },
   modules: {
