@@ -4,12 +4,18 @@
     }
     .catalogue__content {
         grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
     }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
     .content {
         max-width: 930px;
+    }
+    .catalogue {
+        max-width: 890px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .catalogue__content {
         grid-template-columns: repeat(3, 1fr);
@@ -17,11 +23,32 @@
 }
 
 @media (max-width: 750px) {
+    .h1 {
+        margin-bottom: 30px;
+    }
     .content {
         max-width: 690px;
     }
     .catalogue__content {
         grid-template-columns: 450px;
+    }
+    .item {
+        height: 590px;
+        min-height: unset;
+        max-height: unset;
+        padding: 21px 0;
+        &__name {
+            margin-top: 15px;
+            max-width: 330px;
+        }
+        &__pic {
+            width: 335px;
+            height: 399px;
+        }
+        &__price {
+            margin-top: 0;
+            padding: 15px 0;
+        }
     }
     .cart {
         &__name, &__counter, &__price, &__close {
@@ -81,17 +108,37 @@
     }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 579px) {
+    .h1 {
+        font-size: 26px;
+    }
     .content {
         padding: 0 15px;
         min-width: 290px;
     }
     .nav {
-        margin-bottom: 49px;
         margin-top: 28.5px;
+    }
+    .catalogue {
+        margin-top: 50px;
     }
     .catalogue__content {
         grid-template-columns: 270px;
+        gap: 30px;
+    }
+    .item {
+        height: 380px;
+        padding: 10px 20px;
+        &__pic {
+            width: 200px;
+            height: 200px;
+        }
+        &__name {
+            margin-top: 4px;
+        }
+        &__price {
+            margin-top: auto;
+        }
     }
     .form__wrapper {
         padding: 0 17px 0 16px;
@@ -120,6 +167,12 @@
         font-size: 18px!important;
         &:last-child {
             font-size: 16px!important;
+        }
+    }
+    .footer {
+        &__text {
+            margin-top: 54px;
+            padding-bottom: 17px;
         }
     }
 }

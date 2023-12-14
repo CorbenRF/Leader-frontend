@@ -46,7 +46,7 @@
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import {
-  required, email, minLength, maxLength, numeric, alpha,
+  required, email, numeric, helpers,
 } from '@vuelidate/validators';
 import { IMaskDirective } from 'vue-imask';
 import CartItem from '@/components/CartItem.vue';
@@ -68,7 +68,7 @@ export default {
       mask: {
         mask: '+{7}(000)-000-00-00',
         // lazy: false,
-        maxLength: 11,
+        // maxLength: 11,
       },
       modalVisible: false,
       modalData: '',
@@ -78,10 +78,11 @@ export default {
     return { v$: useVuelidate() };
   },
   validations() {
+    const alpha = helpers.regex(/^[ЁёА-я]*$/);
     return {
       name: { required, alpha },
       tel: {
-        required, minLength: minLength(11), maxLength: maxLength(11), numeric,
+        required, numeric,
       },
       email: { required, email },
     };
@@ -185,6 +186,7 @@ export default {
         // margin-bottom: 30px;
       }
     }
+
   }
 
   .input__error {

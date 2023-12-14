@@ -6,9 +6,10 @@
     <div class="item__pic">
       <img :src="picUrl" alt="Фото товара">
     </div>
-    <p class="item__name text">{{ product.name }}</p>
-    <p class="item__price">{{ this.formatPriceRu(product.price) }}</p>
-    <button type="button" class="btn" :class="{ 'btn-success': this.isInCart }"
+    <p class="item__name text" :class="{ hovered: this.isHovering }">{{ product.name }}</p>
+    <p class="item__price" :style="this.isHovering ? 'padding: 15px 0;' : ''">
+    {{ this.formatPriceRu(product.price) }}</p>
+    <button type="button" class="btn item__btn" :class="{ 'btn-success': this.isInCart }"
     v-if="this.isHovering || windowWidth < 751" @click="addToCart" >
       {{ this.isInCart ? 'В КОРЗИНЕ' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </button>
@@ -51,7 +52,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  .hovered {
+    margin-top: 4px!important;
+  }
   .item {
     box-sizing: border-box;
     padding: 10px 20px;
@@ -70,11 +74,12 @@ export default {
       }
     }
     &__name {
-      margin-top: auto;
+      margin-top: 34px;
       text-align: center;
     }
     &__price {
-      padding: 15px 0;
+      margin-top: auto;
+      padding: 15px 0 25px 0;
       color: #000;
       text-align: center;
       font-size: 18px;
@@ -84,6 +89,9 @@ export default {
     }
     &__btn {
       padding: 13px 12px 11px 12px;
+      width: 186px;
+      height: 40px;
+
     }
   }
 </style>

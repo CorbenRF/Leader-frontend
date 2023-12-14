@@ -121,6 +121,12 @@ export default {
   &__minus, &__plus {
     flex-grow: 1;
     cursor: pointer;
+    &:hover, :focus-visible {
+      background-color: var(--color-primary-blue);
+      & > svg > line {
+        stroke: #fff;
+      }
+    }
   }
   &__num {
     flex-grow: 2;
