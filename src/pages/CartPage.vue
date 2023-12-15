@@ -30,7 +30,7 @@
       </div>
 
       <div class="input__wrapper">
-        <input v-model.trim="email" class="form__input text" :class="{ invalid: v$.email.$error}" @input="(e) => v$.email.$touch()"
+        <input v-model.number="email" class="form__input text" :class="{ invalid: v$.email.$error}" @input="(e) => v$.email.$touch()"
         type="text" name="email" id="email" placeholder="Email">
         <div v-if="v$.email.$error" class="input__error">Поле заполнено неверно</div>
       </div>
@@ -162,14 +162,19 @@ export default {
 
 <style lang="scss">
   .cart {
+    &__wrapper h1 {
+      margin-top: 60px;
+      margin-bottom: 0;
+    }
     &__total {
       margin-left: auto;
+      margin-bottom: 0!important;
       width: max-content;
       padding: 30px 47px 60px 0;
     }
     &__form {
       padding-top: 70px;
-      padding-bottom: 76px;
+      padding-bottom: 46px;
       background-color: #F2F5F9;
     }
   }

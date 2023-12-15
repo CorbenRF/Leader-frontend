@@ -1,12 +1,12 @@
 <template>
   <div class="footer content">
-    <p class="footer__text text">
+    <p class="footer__text">
       Тестовое задание на должность младшего программиста «Лидера поиска», ver. 3.0
     </p>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .footer {
     width: 100%;
     margin-top: auto;

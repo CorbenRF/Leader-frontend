@@ -70,17 +70,19 @@ export default {
   &__item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 42px 30px 38px 12px;
+    justify-content: flex-start;
+    padding: 40px 30px 40px 12px;
     border-bottom: 1px solid #A8AFBB;
   }
   &__name {
     max-width: 275px;
+    margin-right: 150px;
   }
   &__counter {
     display: flex;
     width: 160px;
     height: 40px;
+    margin-right: 159px;
     & > * {
       border: 1px solid #A8AFBB;
       display: flex;
@@ -91,6 +93,7 @@ export default {
   &__pic {
     width: 125px;
     height: 150px;
+    margin-right: 64.5px;
     & img {
         width: inherit;
         height: inherit;
@@ -100,9 +103,18 @@ export default {
   }
   &__close {
     display: flex;
+    width: 40px;
+    height: 40px;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
     cursor: pointer;
+    &:hover, :focus-visible {
+      background-color: var(--color-primary-blue);
+      & > svg > line {
+        stroke: #fff;
+      }
+    }
     &-btn {
       display: none;
     }

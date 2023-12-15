@@ -126,6 +126,9 @@ line-height: 130%; /* 20.8px */
         height: 60px;
         margin-bottom: 30px;
       }
+      & .form__title {
+        height: unset;
+      }
     }
     &__input {
         width: 100%;
