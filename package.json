@@ -1,8 +1,11 @@
 {
+  "homepage": "http://corbenrf.github.io/leader-frontend",
   "name": "shop",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -35,6 +38,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "gh-pages": "^6.1.0",
     "postcss-loader": "^7.3.3",
     "sass": "^1.69.5",
     "sass-loader": "^12.6.0",
