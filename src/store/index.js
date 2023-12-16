@@ -103,9 +103,10 @@ export default createStore({
       return axios.get(`${API_BASE_URL}/products`)
         .then((response) => {
           context.commit('setProductsData', response.data);
+          context.commit('setProductsLoading', false);
         })
-        .catch(() => context.commit('setProductsLoadingFailed', true))
-        .then(() => context.commit('setProductsLoading', false));
+        .catch(() => context.commit('setProductsLoadingFailed', true));
+      // .then(() => context.commit('setProductsLoading', false));
     },
     sendMail(context, payload) {
       return axios.post(`${API_BASE_URL}/mail`, payload)

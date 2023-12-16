@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-  <div class="catalogue" v-if="!this.$store.getProductsLoading">
+  <div class="catalogue" v-if="this.isPageLoaded">
     <h1 class="h1">Каталог товаров</h1>
     <div class="catalogue__content">
 
@@ -9,7 +9,10 @@
     </div>
 
   </div>
-  <h2 class="h2" v-else>Загрузка</h2>
+  <div class="loader" v-else>
+    <h2 class="h2">Загрузка</h2>
+  </div>
+
 </div>
 </template>
 
@@ -29,6 +32,9 @@ export default {
     },
     windowWidth() {
       return this.$store.getters.getWindowWidth;
+    },
+    isPageLoaded() {
+      return !this.$store.getters.getProductsLoading;
     },
   },
   methods: {

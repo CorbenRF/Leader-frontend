@@ -1,7 +1,9 @@
 <template>
-  <div class="main">
+  <div class="wrapper">
+    <div class="main">
     <navbar-vue />
   <router-view/>
+  </div>
   <footer-vue />
   </div>
 

@@ -10,7 +10,8 @@
 
 @media (max-width: 1200px) {
     .content {
-        max-width: 77.5%;
+        max-width: 970px;
+        padding: 0 20px;
     }
     .catalogue {
         max-width: 890px;
@@ -18,7 +19,7 @@
         margin-right: auto;
     }
     .catalogue__content {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
     }
     .cart {
         &__pic {

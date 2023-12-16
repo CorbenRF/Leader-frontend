@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable -->
-  <div class="cart" v-if="!this.$store.getProductsLoading">
+  <div class="cart"  v-if="this.isPageLoaded">
   <div class="cart__wrapper content" >
     <h1 class="h1">Корзина</h1>
     <div class="cart__content">
@@ -22,10 +22,11 @@
       </div>
 
       <div class="input__wrapper">
-        <input v-model="telMasked" maxlength="17" class="form__input text"
+        <input  class="form__input text"
          v-imask="mask" @accept="onAccept" @complete="onComplete"
          :class="{ invalid: v$.tel.$error}" @input="(e) => {v$.tel.$touch()}"
-        type="tel" name="tel" id="tel" placeholder="Телефон">
+        @focus.once="this.mask.lazy=false"
+         type="text" name="tel" id="tel" placeholder="Телефон">
         <div v-if="v$.tel.$error" class="input__error">Поле заполнено неверно</div>
       </div>
 
@@ -40,13 +41,15 @@
     </div>
     <ModalPopup v-if="modalVisible" @close="closeModal" :data="this.modalData" />
   </div>
-  <h4 class="h2 loading" v-else>Загрузка</h4>
+  <div class="loader" v-else>
+    <h2 class="h2">Загрузка</h2>
+  </div>
 </template>
 
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import {
-  required, email, numeric, helpers,
+  required, email, numeric, helpers, minLength, maxLength,
 } from '@vuelidate/validators';
 import { IMaskDirective } from 'vue-imask';
 import CartItem from '@/components/CartItem.vue';
@@ -64,11 +67,12 @@ export default {
       name: '',
       tel: '',
       telMasked: '',
+      telMaskedToSend: '',
       email: '',
       mask: {
         mask: '+{7}(000)-000-00-00',
-        // lazy: false,
-        // maxLength: 11,
+        lazy: true,
+        placeholderChar: '_',
       },
       modalVisible: false,
       modalData: '',
@@ -82,12 +86,15 @@ export default {
     return {
       name: { required, alpha },
       tel: {
-        required, numeric,
+        required, numeric, minLength: minLength(11), maxLength: maxLength(11),
       },
       email: { required, email },
     };
   },
   computed: {
+    isPageLoaded() {
+      return !this.$store.getters.getProductsLoading;
+    },
     CartData() {
       return this.$store.getters.getCartData;
     },
@@ -109,7 +116,7 @@ export default {
       this.modalVisible = true;
       this.modalData = {
         name: this.name,
-        tel: this.telMasked,
+        tel: this.telMaskedToSend,
         orderId: '1234567',
       };
     },
@@ -119,14 +126,15 @@ export default {
     },
     onAccept(e) {
       const maskRef = e.detail;
-      this.value = maskRef.value;
+      console.log('event imask input: ', e);
       this.tel = maskRef.unmaskedValue;
-      console.log('accept', maskRef.value);
+      this.telMaskedToSend = maskRef.value;
+      // console.log('accept', maskRef.value);
     },
-    onComplete(e) {
-      const maskRef = e.detail;
-      console.log('complete', maskRef.unmaskedValue);
-    },
+    // onComplete(e) {
+    //   const maskRef = e.detail;
+    //   console.log('complete', maskRef.unmaskedValue);
+    // },
     backOutFromCart() {
       if (this.isCartEmpty) {
         this.$router.push('/');
@@ -135,7 +143,7 @@ export default {
     async submitForm() {
       this.$store.dispatch('sendMail', {
         name: this.name,
-        tel: this.telMasked,
+        tel: this.telMaskedToSend,
         orderId: '1234567',
         email: this.email,
       })
